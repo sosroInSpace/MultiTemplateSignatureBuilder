@@ -103,19 +103,14 @@ function TemplateOne(props){
 			           
 			            
 			            </td>
-			            <td colSpan={5} style={{paddingTop: '10px', paddingLeft: '15px', fontSize: '16px', fontWeight: 600, color: headingColor, textTransform: 'capitalize'}}>{heading ? heading : ""}</td>
+			            <td colSpan={5} style={{paddingTop: '10px', paddingLeft: '15px', fontSize: '16px', fontWeight: 600, color: headingColor}}>{heading ? heading : ""}</td>
 			          </tr>
 			          {addByline ? 
-			          	<tr>
-			            <td colSpan={5} style={{paddingLeft: '15px', fontSize: '10px', color: addColor, textTransform: 'capitalize'}}>
-			              {bylineAdd}
-			              <br />
-			            </td>
-			          </tr>
+			          	<tr><td colSpan={5} style={{paddingLeft: '15px', fontSize: '10px', color: addColor}}>{bylineAdd}</td></tr>
 			          	: ""}
 			          {byline ? 
 			          	<tr>
-			            <td colSpan={5} style={{paddingLeft: '15px', fontSize: '13px', color: bylineColor, textTransform: 'capitalize'}}>
+			             <td colSpan={5} style={{paddingLeft: '15px', fontSize: '13px', color: bylineColor}}>
 			              {byline}<br />
 			              <br />
 			            </td>
