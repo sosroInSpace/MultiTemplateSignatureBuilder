@@ -35,12 +35,8 @@ function App() {
           <ul>
               <li>Fill in the form on each signature template to create an email signature.</li>
               <li>Copy the signature via the <strong><em>`Copy Signature`</em></strong> button to use within Gmail or other email clients.</li>
-              <li>Download the signatures source code via the <strong><em>`download HTML`</em></strong>  button to make further edits.</li>
+              <li>Download the signatures source code via the <strong><em>`Download HTML`</em></strong>  button to make further edits.</li>
           </ul>
-        </section>
-        <section className="links">
-            <Link to="/" className={clickNavOne ? "add-another active" : "add-another"} onClick={navClickOne}>Template One</Link>
-            <Link to="/template-two" className={clickNavTwo ? "add-another active" : "add-another"} onClick={navClickTwo}>Template Two</Link>
         </section>
       </div>
       
@@ -48,7 +44,16 @@ function App() {
            <Route exact path="/" element={<TemplateOne/>}/>
           <Route exact path="/template-two" element={<TemplateTwo/>}/>
         </Routes>
+        <div className="link-wrapper navigation">
+      <section className="links">
+      <h2>Navigation</h2>
+      <h5>Pick a template</h5>
+            <Link to="/" className={clickNavOne ? "add-another active" : "add-another"} onClick={navClickOne}>Template One</Link>
+            <Link to="/template-two" className={clickNavTwo ? "add-another active" : "add-another"} onClick={navClickTwo}>Template Two</Link>
+        </section>
+      </div>
       </Router>
+      
   </div>
   );
 

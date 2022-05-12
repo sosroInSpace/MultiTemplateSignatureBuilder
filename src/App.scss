@@ -8,7 +8,7 @@ $font: 'Quicksand', sans-serif;
     padding: 25px;
     width:500px;
     margin-bottom:15px;
-    border:2px solid #333;
+    border:2px solid #555;
 }
 .signature-parent-wrapper {
      margin-bottom: 25px;
@@ -16,7 +16,6 @@ $font: 'Quicksand', sans-serif;
     padding-top: 50px;
     padding-bottom: 100px;
     margin: auto;
-    left: 150px;
     position: relative;
     animation:formIn 1s 1;
     animation-fill-mode:forwards;
@@ -36,7 +35,7 @@ $font: 'Quicksand', sans-serif;
 .download-button {
   background: #fff;
     padding: 25px;
-   border:2px solid #333;
+   border:2px solid #555;
     text-align:center;
   button {
       margin: 0 7.5px;
@@ -60,9 +59,9 @@ $font: 'Quicksand', sans-serif;
   max-width:150px;
   font-weight:bold;
   transition:.4s;
-  border:2px solid #333;
+  border:2px solid #555;
   background:#f7f0f0;
-  color:#333;
+  color:#555;
   border-radius:0;
   &:hover {
     transition:.4s;
@@ -71,11 +70,11 @@ $font: 'Quicksand', sans-serif;
 }
 form fieldset label {
   background:none !important;
-  color:#333 !important;
+  color:#555 !important;
 }
 input[type='file'] {
     margin-bottom: 15px;
-    color: #333;
+    color: #555;
     background: none;
     margin-bottom: 0;
     position: absolute;
@@ -103,19 +102,16 @@ form {
     max-width: 150px;
     font-weight: bold;
     transition: .4s;
-    border: 2px solid #333;
+    border: 2px solid #555;
     background: #f7f0f0;
     color: #eadede;
     border-radius: 0;
-    background: #333;
+    background: #555;
     justify-content: center;
     display:flex;
   }
 }
 
-table {
-  min-height:150px;
-}
 
 fieldset.flex.logo-upload {
     position: relative;
@@ -136,7 +132,7 @@ fieldset.flex.logo-upload {
     margin-top: 10px;
     border: 2px dashed;
     border-radius: 5px;
-    color: #333;
+    color: #555;
     font-size: 14px;
     font-weight: bold;
     transition: .4s;
@@ -287,6 +283,7 @@ fieldset.flex-color.byline-extra {
       font-size: 18px;
       margin: 0;
       padding: 0 9px;
+      color:#666;
   }
   ul {
     padding-left: 0;
@@ -385,9 +382,9 @@ fieldset.flex-color.byline-extra {
 }
 .black.wrapper {
   .instructions {
-    background:#333;
+    background:#555;
     &::before {
-      background:#333;
+      background:#555;
     }
   }
 }
@@ -402,7 +399,7 @@ fieldset.flex-color.byline-extra {
   }
 }
 h1 {
-  color: #333;
+  color: #555;
     font-size: 14px;
     text-align: left;
     font-weight:normal;
@@ -413,7 +410,7 @@ h1 {
 form {
   margin-bottom:5px;
   padding-bottom:25px;
-  border-bottom:2px solid #333;
+  border-bottom:2px solid #555 !important;
   fieldset {
       border: none;
       padding:0;
@@ -423,7 +420,7 @@ form {
         display: block;
         font-size: 14px;
         text-align: left;
-        color: #333;
+        color: #555;
         font-weight: bold;
         padding: 8px 5px;
         background:none;
@@ -484,7 +481,24 @@ form {
       bottom: -4px;
   }
 }
-
+.link-wrapper.navigation {
+  right:0;
+  border-left:2px solid #555;
+  .links {
+    margin-top:15px;
+  }
+  h2 {
+      width:100%;
+      display:block;
+      margin-bottom:0;
+      margin-top:0;
+      color:#555;
+    }
+    h5 {
+      margin:15px 0;
+      color:#666;
+    }
+}
 .navigation {
   width:300px;
   height:100%;
@@ -495,7 +509,8 @@ form {
   text-align:center;
   box-sizing: border-box;
   background:#fff;
-  border-right:2px solid #333;
+  border-right:2px solid #555;
+
 
   h1 {
    font-size:24px;
@@ -504,8 +519,10 @@ form {
    text-align:center;
   }
   h5 {
-    margin-top:15px;
+    margin:15px 0;
     font-size:14px;
+    color:#555;
+
   }
   ul {
     padding-left:0;
@@ -530,7 +547,7 @@ form {
         margin-top:0;
         text-decoration:none;
         &.active {
-          background:#333;
+          background:#555;
           color:#eadede;
         }
       }

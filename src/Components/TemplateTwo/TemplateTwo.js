@@ -95,47 +95,7 @@ function TemplateOne(props){
 				heading="Template Two"
 				/>
 				<span className="copy" ref={sigRef}>
-					<table width={450} ref={tableRef} style={{fontFamily: 'Arial, sans-serif', textAlign: 'left', color: 'rgb(0, 0, 0)', fontSize: '14px', lineHeight: '16px', width: '450px'}}>
-			        <tbody>
-			          <tr>
-			            <td rowSpan={7} align="center" style={{width: '30%', paddingRight: '5px'}}>
-			            {logo ? 
-			             <img src={logo} width={logoWidth ? logoWidth : "130"} alt="" style={{maxWidth: '190px',paddingTop: '10px'}} />
-
-			            : "" }
-			           
-			            
-			            </td>
-			            <td colSpan={5} style={{paddingTop: '10px', paddingLeft: '15px', fontSize: '16px', fontWeight: 600, color: headingColor}}>{heading ? heading : ""}</td>
-			          </tr>
-			          {addByline ? 
-			          	<tr><td colSpan={5} style={{paddingLeft: '15px', fontSize: '10px', color: addColor}}>{bylineAdd}</td></tr>
-			          	: ""}
-			          {byline ? 
-			          	<tr>
-			             <td colSpan={5} style={{paddingLeft: '15px', fontSize: '13px', color: bylineColor}}>
-			              {byline}<br />
-			              <br />
-			            </td>
-			          </tr>
-			          	: ""}
-			           
-			           {values.map((obj, i)=>{
-			           	if(obj.heading==="P:" || obj.heading==="M:"){
-			           		return <tr><td colSpan={5} style={{paddingLeft: '15px'}}><span style={{fontWeight: 600, fontSize: '12px', color: obj.headingColor}}>{obj.heading} </span><span style={{fontSize: '12px', color: obj.extraColor}}>{obj.extra}</span></td></tr>
-			           		}
-			           		else if(obj.heading=="W:")
-			           		{
-			           			return <tr><td colSpan={2} style={{paddingLeft: '15px', color: 'rgb(90, 90, 90)'}}><a href={obj.extra} style={{color: obj.extraColor, fontSize: '13px', fontWeight: 600}}>{obj.extra}<br /></a></td></tr>
-			           		}
-			           			else if (obj.heading=="E:"){
-			           				return <tr><td colSpan={5} style={{paddingLeft: '15px'}}><span style={{fontWeight: 600, fontSize: '12px', color: obj.headingColor}}>{obj.heading} </span><span style={{fontSize: '12px', color: obj.extraColor}}><a href={"mailto:" + obj.extra}>{obj.extra}</a></span></td></tr>
-			           		}})}
-
-			          	
-			        
-			         </tbody>
-			      </table>
+					<table width={450}ref={tableRef}style={{fontFamily: 'Arial, sans-serif', textAlign: 'left', color: 'rgb(0, 0, 0)', fontSize: '14px', lineHeight: '16px', width: '450px'}}> <tbody> <tr> <td rowSpan={7}align="center" style={{width: '30%', paddingRight: '5px'}}>{logo ? <img src={logo}width={logoWidth ? logoWidth : "130"}alt="" style={{maxWidth: '190px',paddingTop: '10px'}}/> : ""}</td><td colSpan={5}style={{paddingTop: '10px', paddingLeft: '15px', fontSize: '16px', fontWeight: 600, color: headingColor}}>{heading ? heading : ""}</td></tr>{addByline ? <tr><td colSpan={5}style={{paddingLeft: '15px', fontSize: '10px', color: addColor}}>{bylineAdd}</td></tr>: ""}{byline ? <tr> <td colSpan={5}style={{paddingLeft: '15px', fontSize: '13px', color: bylineColor}}>{byline}<br/> <br/> </td></tr>: ""}{values.map((obj, i)=>{if(obj.heading==="P:" || obj.heading==="M:"){return <tr><td colSpan={5}style={{paddingLeft: '15px'}}><span style={{fontWeight: 600, fontSize: '12px', color: obj.headingColor}}>{obj.heading}</span><span style={{fontSize: '12px', color: obj.extraColor}}>{obj.extra}</span></td></tr>}else if(obj.heading=="W:"){return <tr><td colSpan={2}style={{paddingLeft: '15px', color: 'rgb(90, 90, 90)'}}><a href={obj.extra}style={{color: obj.extraColor, fontSize: '13px', fontWeight: 600}}>{obj.extra}<br/></a></td></tr>}else if (obj.heading=="E:"){return <tr><td colSpan={5}style={{paddingLeft: '15px'}}><span style={{fontWeight: 600, fontSize: '12px', color: obj.headingColor}}>{obj.heading}</span><span style={{fontSize: '12px', color: obj.extraColor}}><a href={"mailto:" + obj.extra}>{obj.extra}</a></span></td></tr>}})}</tbody> </table>
 				</span>
 			</div>
 			<div className="download-button">
