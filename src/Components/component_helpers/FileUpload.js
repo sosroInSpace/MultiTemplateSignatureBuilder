@@ -9,6 +9,7 @@ function FileUpload(props) {
     const [logoWidth, setWidth] = useState('');
     const [loader, setLoader] = useState(false);
     const [fileName, setFileName] = useState('');
+    const [hover, setHover] = useState(false);
 
     const handleClick = event => {
         console.log(fileInput.current);
@@ -56,6 +57,13 @@ function FileUpload(props) {
        
     }
 
+    const hoverStateIn = event => {
+        setHover(true);
+    }
+
+    const hoverStateOut = event => {
+        setHover(false)
+    }
 
 
     const handleLogoWidth = event => {
@@ -74,8 +82,8 @@ function FileUpload(props) {
                 <label>Upload logo</label>
                 {props.setValue(s3file)}
                 {props.setLogoWidth(logoWidth)}
-                 <input type="file" ref={fileInput} onChange={handleClick} className="add-another"/>
-                 <div className="file-loader">
+                 <input type="file" ref={fileInput} onChange={handleClick} onMouseEnter={hoverStateIn} onMouseLeave={hoverStateOut} className="add-another"/>
+                 <div className={hover ? "file-loader active" : "file-loader"}>
                     <p>{fileName ? fileName : "Upload image - .png or .jpeg - max 2mb"}</p>
                  </div>
                  <div className="loader">

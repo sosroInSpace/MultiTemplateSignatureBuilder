@@ -13,10 +13,12 @@ function App() {
   const [clickNavTwo, setClickNavTwo] = useState(false);
   
   const navClickOne = event => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
     setClickNavOne(true);
     setClickNavTwo(false);
   }
   const navClickTwo = event => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
     setClickNavTwo(true);
     setClickNavOne(false);
   }
@@ -32,8 +34,8 @@ function App() {
           <h5>Instructions</h5>
           <ul>
               <li>Fill in the form on each signature template to create an email signature.</li>
-              <li>Copy the signature via the copy button to use within Gmail or other email clients.</li>
-              <li>Download the signatures source code via the `download HTML`  button to make further edits.</li>
+              <li>Copy the signature via the <strong><em>`Copy Signature`</em></strong> button to use within Gmail or other email clients.</li>
+              <li>Download the signatures source code via the <strong><em>`download HTML`</em></strong>  button to make further edits.</li>
           </ul>
         </section>
         <section className="links">

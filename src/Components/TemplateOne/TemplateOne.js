@@ -54,12 +54,15 @@ function TemplateOne(props){
 
     function copySig(e){
     	setCopySuccess(true);
+    	setCopyContentSuccess(false);
     	copyToClipboard(sigRef.current.innerHTML);
 	}
 
 
 
 	const copyContent = (e) => {
+
+
 	var range = document.createRange();
     range.selectNode(tableRef.current);
     console.log(range);
@@ -68,6 +71,7 @@ function TemplateOne(props){
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
     window.getSelection().removeAllRanges();// to deselect
+    setCopySuccess(false);
     setCopyContentSuccess(true);
 	}
   

@@ -188,7 +188,7 @@ function FormFields(props){
 		            <input 
 		              type="text" 
 		              id="name"
-		              placeholder="Enter heading (name)"
+		              placeholder="Enter heading e.g name"
 		              onChange={headingChange}
 		              />
 		             <div>
@@ -200,7 +200,7 @@ function FormFields(props){
 	            <input 
 	              type="text" 
 	              id="name"
-	              placeholder="Enter byline (job title)"
+	              placeholder="Enter byline e.g. job title"
 	              onChange={bylineChange}
 	              />
 	          	<div>
@@ -268,7 +268,7 @@ function FormFields(props){
 						            <input 
 						              type="text" 
 						              id="name"
-						              placeholder="Enter exta accent (phone:, email:, website:)"
+						              placeholder="phone, mobile etc"
 						              onChange={handleExtra}
 						              />
 					             </div>

@@ -38,6 +38,7 @@ function TemplateOne(props){
 	const tableRef = useRef(null);
 
 
+
 	function copyToClipboard(text) {
     var dummy = document.createElement("textarea");
     // to avoid breaking orgain page when copying more words
@@ -54,6 +55,7 @@ function TemplateOne(props){
 
     function copySig(e){
     	setCopySuccess(true);
+    	setCopyContentSuccess(false);
     	copyToClipboard(sigRef.current.innerHTML);
 	}
 
@@ -68,6 +70,7 @@ function TemplateOne(props){
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
     window.getSelection().removeAllRanges();// to deselect
+    setCopySuccess(false);
     setCopyContentSuccess(true);
 	}
   
@@ -136,7 +139,7 @@ function TemplateOne(props){
 				</span>
 			</div>
 			<div className="download-button">
-				<button onClick={copyContent} className="add-another">{copyContentSuccess ? "Copied" : "Copy Signature"}</button>
+				<button onClick={copyContent} className="add-another">{copyContentSuccess ? "Copied!" : "Copy Signature"}</button>
 				<button onClick={copySig} className="add-another">{copySuccess ? "Copied!" : "Copy HTML"}</button>
 			</div>
 		</div>
