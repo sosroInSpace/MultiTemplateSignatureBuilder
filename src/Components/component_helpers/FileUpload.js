@@ -42,6 +42,7 @@ function FileUpload(props) {
                 .uploadFile(file, newFileName)
                 .then(data => {
                     setS3File(data.location);
+                    console.log(data);
 
                 }).then(data => {
                     setLoader(false);
