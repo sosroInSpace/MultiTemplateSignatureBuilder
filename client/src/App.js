@@ -1,22 +1,40 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.scss';
-import FormComponent from './Components/FormComponent';
 import TemplateOne from './Components/TemplateOne/TemplateOne';
 import TemplateTwo from './Components/TemplateTwo/TemplateTwo';
+import Login from './Components/Login/Login';
 require('dotenv').config()
 
 function App() {
 
   const [clickNavOne, setClickNavOne] = useState(false);
   const [clickNavTwo, setClickNavTwo] = useState(false);
+  // token 
+  const [token, setToken] = useState();
   
+  
+
+  useEffect(() => {
+    const storageItem = sessionStorage.getItem('app_user_id');
+    console.log(storageItem);
+
+  });
+
+   if(!token) {
+      return <div><Login setToken={setToken} /></div>
+    }
+  
+
+
   const navClickOne = event => {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     setClickNavOne(true);
     setClickNavTwo(false);
   }
+
+
   const navClickTwo = event => {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     setClickNavTwo(true);
