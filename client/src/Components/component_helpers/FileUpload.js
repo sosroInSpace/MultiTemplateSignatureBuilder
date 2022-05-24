@@ -78,7 +78,7 @@ function FileUpload(props) {
 
   
 	return (
-        <fieldset className="flex logo-upload">
+        <fieldset className="logo-upload">
             <div>
                 <label>Upload logo</label>
                 {props.setValue(s3file)}
@@ -93,7 +93,7 @@ function FileUpload(props) {
              </div>
              <div> 
                 <label>Logo width</label>
-                <input type="number" placeholder="Enter logo width in px - maximum of 251px" onChange={handleLogoWidth}/>
+                <input type="number" placeholder="Enter logo width in px - maximum of 251px" onChange={handleLogoWidth} value={props.logo_width_saved}/>
              </div>
         </fieldset>
     )

@@ -1,7 +1,32 @@
 
 $font: 'Quicksand', sans-serif;
-
-
+html {
+  background:#f2f0f0;
+}
+.flex {
+  display:flex;
+  label {
+    width:100%;
+  }
+}
+.error {
+  color:#555;
+  animation:blink .6s 1;
+  font-size:14px;
+  margin-bottom:0;
+  margin-left:2.5px;
+}
+@keyframes blink {
+  0 {
+    opacity:1;
+  }
+  50%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+}
 .signature-wrapper {
     background: #fff;
     cursor: pointer;
@@ -63,6 +88,7 @@ $font: 'Quicksand', sans-serif;
   background:#f7f0f0;
   color:#555;
   border-radius:0;
+  min-width:auto;
   &:hover {
     transition:.4s;
     background:#eadede;
@@ -78,7 +104,7 @@ input[type='file'] {
     background: none;
     margin-bottom: 0;
     position: absolute;
-    height: calc(100% - 33px);
+    height:113px;
     opacity: 0;
     z-index: 9;
     max-width:100%;
@@ -99,7 +125,7 @@ form {
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 20px;
-    max-width: 150px;
+    max-width: calc(100% - 25px);
     font-weight: bold;
     transition: .4s;
     border: 2px solid #555;
@@ -144,6 +170,7 @@ fieldset.flex.logo-upload {
 
 }
 fieldset {
+  position:relative;
   .loader {
       position: relative;
       width: 100;
@@ -559,14 +586,13 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height:100vh;
     justify-content: center;
     background:#f3f0f0;
     form {
         padding:25px;
         border:2px solid #333;
         width:100%;
-        max-width:400px;
+        max-width:500px;
         background:#fff;
         label {
             display: block;

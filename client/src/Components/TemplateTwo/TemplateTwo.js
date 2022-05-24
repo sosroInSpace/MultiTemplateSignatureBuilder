@@ -78,6 +78,7 @@ function TemplateOne(props){
 		<div className="signature-parent-wrapper">
 			<div className="signature-wrapper">
 				<FormFields
+				setCompany={props.setCompany}
 				setHeading={setHeading}
 				setHeadingColor={setHeadingColor}
 				setBylineInit={setBylineInit}

@@ -1,11 +1,13 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 import './Login.scss';
 
+function scrollToTop(){
+	window.scroll({top: 0, left: 0, behavior: 'smooth'});
+}
 
-export default function Login({ setToken }) {
+export default function Login({ setToken, setFirstName, setCompany }) {
 
 	const [form, setForm] = useState({
 	   username: "",
@@ -14,7 +16,8 @@ export default function Login({ setToken }) {
 	   company_name: "",
 	   first_name: "",
 	   last_name: "",
-	   email: ""
+	   email: "",
+
 	 });
 
 	const [formLogin, setFormLogin] = useState({
@@ -24,8 +27,10 @@ export default function Login({ setToken }) {
 
   const [register, setRegister] = useState(false);
   const [records, setRecords] = useState("");
+  const [infoCheck, setInfoCheck] = useState(false);
 
    useEffect(() => {
+
    async function getRecords() {
      const response = await fetch(`http://localhost:5000/record/`);
  
@@ -39,6 +44,8 @@ export default function Login({ setToken }) {
 
      setRecords(records);
    }
+
+  
  
    getRecords();
  
@@ -50,18 +57,31 @@ export default function Login({ setToken }) {
 	    let current_username = formLogin.username;
 	    let current_password = formLogin.password;
 	    let user_id;
+	    let first_name;
+	    let company;
 	   
 	    records.forEach((element, index, array) => {
 			    array.forEach((el) => {
 			    	if(current_username == el.username && current_password == el.password){
 			    		 	user_id = el._id;
+			    		 	first_name = el.first_name;
+			    		 	company = el.company;
+			    	} else {
+			    		setInfoCheck(true);
+			    		e.currentTarget.reset();
 			    	}
 			    	
 			    });
 			});
-			
+			e.currentTarget.reset();
 			setToken(user_id);
-			sessionStorage.setItem("app_user_id", user_id);
+			setFirstName(first_name);
+			setCompany(company);
+			if(user_id){
+				localStorage.setItem('token', user_id);
+			}
+			
+
 	  }
 
 
@@ -92,10 +112,12 @@ export default function Login({ setToken }) {
 	  const RegisterToggle = e => {
 	  		e.preventDefault();
 	  		setRegister(true);
+	  		scrollToTop()
 	  }
 	  const LoginToggle = e => {
 	  	e.preventDefault();
 	  	setRegister(false);
+	  	scrollToTop()
 	  }
 
 
@@ -124,6 +146,7 @@ export default function Login({ setToken }) {
 				<fieldset>
 				<h4>Please Register</h4>
 				</fieldset>
+				<fieldset className="flex">
 		      <label>
 		        <p>Username</p>
 		        <input type="text" placeholder="Enter username" 
@@ -142,6 +165,8 @@ export default function Login({ setToken }) {
 						}}
 		        />
 		      </label>
+		      </fieldset>
+		      <fieldset className="flex">
 		      <label>
 		        <p>First Name</p>
 		        <input type="text" placeholder="Enter first name" 
@@ -160,6 +185,8 @@ export default function Login({ setToken }) {
 						}}
 		        />
 		      </label>
+		      </fieldset>
+		      <fieldset className="flex">
 		      <label>
 		        <p>Email</p>
 		        <input type="email" placeholder="Enter email" 
@@ -169,6 +196,7 @@ export default function Login({ setToken }) {
 						}}
 		        />
 		      </label>
+
 		      <label>
 		        <p>Password</p>
 		        <input type="password" placeholder="Enter password" 
@@ -178,6 +206,7 @@ export default function Login({ setToken }) {
 						}}
 		        />
 		      </label>
+		      </fieldset>
 		      <label>
 		        <p>Confirm Password</p>
 		        <input type="password" placeholder="Enter password check" 
@@ -188,13 +217,14 @@ export default function Login({ setToken }) {
 		        />
 		      </label>
 		      <div>
-		        <button type="submit" className="add-another">Submit</button>
+		        <button type="submit" className="add-another">Register</button>
 		      </div>
 		    </form>
 		  {/* LOGIN FORM */}
 			<form onSubmit={handleSubmit} className={register ? "login-form hide" : "login-form"}>
 				<fieldset>
 				<h4>Please Log In</h4>
+				{infoCheck ? <p className="error">No username or password found!</p> : ""}
 				</fieldset>
 		      <label>
 		        <p>Username</p>
@@ -215,7 +245,7 @@ export default function Login({ setToken }) {
 		        />
 		      </label>
 		      <div>
-		        <button type="submit" className="add-another">Submit</button>
+		        <button type="submit" className="add-another">Login</button>
 		      </div>
 		    </form>
 		    <p style={{fontSize:'14px'}} className={register ? "hide" : "show"}>Don't have an account? register <button onClick={RegisterToggle}>here</button>.</p>
@@ -225,5 +255,7 @@ export default function Login({ setToken }) {
 }
 
 Login.propTypes = {
-  setToken: PropTypes.func.isRequired
+  setToken: PropTypes.func.isRequired,
+  setFirstName: "",
+  setCompany: ""
 }
