@@ -63,6 +63,8 @@ function TemplateOne(props){
 
 	const [extra_heading_color_one, set_extra_heading_color_one ] = useState('');
     const [extra_value_color_one, set_extra_value_color_one] = useState('');
+
+    const [extra_heading_color_two, set_extra_heading_color_two ] = useState('');
   
 	useEffect(() => {
 	    // Update the document title using the browser API
@@ -86,6 +88,9 @@ function TemplateOne(props){
          // extras
          set_extra_heading_color_one(data.signature_template.extra_heading_color_1);
          set_extra_value_color_one(data.signature_template.extra_heading_color_value_1);
+
+         set_extra_heading_color_two(data.signature_template.extra_heading_color_2);
+         
           
         })
         .catch(error => {
@@ -230,6 +235,8 @@ function TemplateOne(props){
 				setLogoWidthSaved={logo_width_saved}
 				setExtraHeading={setExtraHeading}
 				setExtraHeadingColor={setExtraHeadingColor}
+				setExtraHeadingColorOneSaved={extra_heading_color_one}
+				setExtraHeadingColorTwoSaved={extra_heading_color_two}
 				setExtraChange={setExtraChange}
 				setExtraChangeColor={setExtraChangeColor}
 				dymSetExtraHeading={dymSetExtraHeading}
@@ -237,7 +244,7 @@ function TemplateOne(props){
 				heading="Template One"
 				/>
 				<span className="copy" ref={sigRef}>
-					<table width={500}ref={tableRef}style={{fontFamily: 'Arial, sans-serif', textAlign: 'left', color: 'rgb(0, 0, 0)', fontSize: '14px', lineHeight: '16px', width: '500px'}}> <tbody><tr><td colSpan={5}style={{paddingTop: '10px',fontSize: '20px', fontWeight: 600, color: headingColor ? headingColor : color_one_saved, fontFamily: 'Arial, sans-serif'}}>{heading ? heading : ""}</td></tr><tr> <td colSpan={5}style={{fontSize: '10px', color: addColor ? addColor : byline_2_saved, fontFamily: 'Arial, sans-serif'}} id="byline-color-2">{bylineAdd}</td></tr><tr> <td colSpan={5} style={{fontSize: '12px', color: bylineColor ? bylineColor : byline_1_saved, fontFamily: 'Arial, sans-serif'}}>{byline}<br/></td></tr><tr> <td colSpan={5}> <br/> <br/><img src={logo ? logo : logo_url_saved } id="logo-url" width={logoWidth ? logoWidth : logo_width_saved} style={{maxWidth:'251px'}}/> <br/> </td></tr><tr> <td colSpan={2}style={{color: 'rgb(0,0,0)', fontFamily: 'Arial, sans-serif'}}>{values.map((obj, i)=>{if(obj.heading==="P:" || obj.heading==="M:"){return <span style={{fontFamily: 'Arial, sans-serif', fontSize: '13px'}}> <span style={{fontWeight:'bold',fontSize:'13px', color: obj.id === 0 ? obj.headingColor : extra_heading_color_one, fontFamily: 'Arial, sans-serif'}}>{obj.heading} </span><span style={{color: obj.extraColor}}>{obj.extra}</span> | </span>}else if(obj.heading=="W:"){return <span style={{fontFamily: 'Arial, sans-serif'}}><span style={{fontWeight:'bold',fontSize:'13px', color: obj.headingColor, fontFamily: 'Arial, sans-serif'}}>{obj.heading} </span><a href={obj.extra}target="_blank" style={{color: obj.extraColor, fontSize: '13px', fontWeight: 'normal',textDecoration:'none', fontFamily: 'Arial, sans-serif'}}>{obj.extra} | </a></span>}else if (obj.heading=="E:"){return <span><span style={{fontWeight:'bold',fontSize:'13px', color: obj.headingColor, fontFamily: 'Arial, sans-serif'}}>{obj.heading} </span><a href={"mailto:" + obj.extra}style={{color: obj.extraColor, fontSize: '13px', fontWeight: 'normal',textDecoration:'none', fontFamily: 'Arial, sans-serif'}}>{obj.extra} | </a></span>}})}</td></tr></tbody></table> 
+					<table width={500}ref={tableRef}style={{fontFamily: 'Arial, sans-serif', textAlign: 'left', color: 'rgb(0, 0, 0)', fontSize: '14px', lineHeight: '16px', width: '500px'}}> <tbody><tr><td colSpan={5}style={{paddingTop: '10px',fontSize: '20px', fontWeight: 600, color: headingColor ? headingColor : color_one_saved, fontFamily: 'Arial, sans-serif'}}>{heading ? heading : ""}</td></tr><tr> <td colSpan={5}style={{fontSize: '10px', color: addColor ? addColor : byline_2_saved, fontFamily: 'Arial, sans-serif'}} id="byline-color-2">{bylineAdd}</td></tr><tr> <td colSpan={5} style={{fontSize: '12px', color: bylineColor ? bylineColor : byline_1_saved, fontFamily: 'Arial, sans-serif'}}>{byline}<br/></td></tr><tr> <td colSpan={5}> <br/> <br/><img src={logo ? logo : logo_url_saved } id="logo-url" width={logoWidth ? logoWidth : logo_width_saved} style={{maxWidth:'251px'}}/> <br/> </td></tr><tr> <td colSpan={2}style={{color: 'rgb(0,0,0)', fontFamily: 'Arial, sans-serif'}}>{values.map((obj, i)=>{if(obj.heading==="P:" || obj.heading==="M:"){return <span style={{fontFamily: 'Arial, sans-serif', fontSize: '13px'}}> <span style={{fontWeight:'bold',fontSize:'13px', color: obj.id === 0 ? extra_heading_color_one : obj.headingColor, fontFamily: 'Arial, sans-serif'}}>{obj.heading} </span><span style={{color: obj.extraColor}}>{obj.extra}</span> | </span>}else if(obj.heading=="W:"){return <span style={{fontFamily: 'Arial, sans-serif'}}><span style={{fontWeight:'bold',fontSize:'13px', color: obj.headingColor, fontFamily: 'Arial, sans-serif'}}>{obj.heading} </span><a href={obj.extra}target="_blank" style={{color: obj.extraColor, fontSize: '13px', fontWeight: 'normal',textDecoration:'none', fontFamily: 'Arial, sans-serif'}}>{obj.extra} | </a></span>}else if (obj.heading=="E:"){return <span><span style={{fontWeight:'bold',fontSize:'13px', color: obj.headingColor, fontFamily: 'Arial, sans-serif'}}>{obj.heading} </span><a href={"mailto:" + obj.extra}style={{color: obj.extraColor, fontSize: '13px', fontWeight: 'normal',textDecoration:'none', fontFamily: 'Arial, sans-serif'}}>{obj.extra} | </a></span>}})}</td></tr></tbody></table> 
 				</span>
 			</div>
 			<div className="download-button">

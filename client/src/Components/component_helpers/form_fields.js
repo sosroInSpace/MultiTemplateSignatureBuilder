@@ -85,15 +85,17 @@ function FormFields(props){
 	// add extra 
 	const [addExtra, setAddExtra] = useState([]);
 	// dynamic extras
-  const [values, setValues] = useState([{ id: 0, heading: "", headingColor: "", extra: "", extraColor: "" }]);
+  const [values, setValues] = useState([{ id: 0, heading: "", headingColor: "", extra: "", extraColor: "", heading_color_one_saved: "" }]);
   const [addLimit, setAddLimit] = useState(0);
   const [displayLimit, setDisplayLimit] = useState(false);
 
+  
+     
 
    useEffect(() => {
 
-   
-  },[]);
+
+  });
 
 	// update heading
 	const headingChange = (event) => {
@@ -115,7 +117,6 @@ function FormFields(props){
 
 	const additionalColorChange = (event) => {
 		setAddColor(event.currentTarget.value);
-		console.log(addColor);
 	}
 
 
@@ -134,15 +135,15 @@ function FormFields(props){
 		
 	 };
 
-	// add more extras
 
 	const buttonAddExtra = (event) => {
 		event.preventDefault();
 		setAddLimit(addLimit + 1);
-		if(addLimit >= 3){
+		
+		if(addLimit == 3){
 			setDisplayLimit(true);
 		} else {
-			setValues(arr => arr.concat([{ heading: "", headingColor: "", extra: "", extraColor: "" }]));
+			setValues(arr => arr.concat([{ id: addLimit + 1, heading: "", headingColor: "", extra: "", extraColor: "" }]));
 		}
 		
 
@@ -197,7 +198,7 @@ function FormFields(props){
 		              onChange={headingChange}
 		              />
 		             <div>
-	              	<input type="color" id="color-one" placeholder="pick a color" onChange={headingColorChange} value={props.setheadingColorSaved}/>
+	              	<input type="color" id="color-one" placeholder="pick a color" onChange={headingColorChange} value={headingColor ? headingColor : props.setheadingColorSaved}/>
 	              </div>
 	          </fieldset>
 	          <fieldset className="flex-color">
@@ -209,11 +210,11 @@ function FormFields(props){
 	              onChange={bylineChange}
 	              />
 	          	<div>
-	          		<input type="color" id="color-byline-1" placeholder="pick a color" onChange={bylineColorChange} value={props.setBylineSaved}/>
+	          		<input type="color" id="color-byline-1" placeholder="pick a color" onChange={bylineColorChange} value={bylineColor ? bylineColor : props.setBylineSaved}/>
 	          	</div>
 	         
 	          	{props.setBylineSaved != "" ? 
-	          	<MoreBylines byline_change={additionalBylineChange} byline_color_change={additionalColorChange} color={props.setAddColorSaved}/>
+	          	<MoreBylines byline_change={additionalBylineChange} byline_color_change={additionalColorChange} color={addColor ? addColor : props.setAddColorSaved}/>
 	          	: addByline ? addByline : ""}
 	          	
 	          	<div className="byline-additional">
@@ -228,31 +229,51 @@ function FormFields(props){
 	      />
 	       {
 						      values.map((obj, i) => {
+
+						      	// add saved data
+						    	
 										function handleChangeHeading(event) {
 						          const value = event.currentTarget.value;
-						          setValues(arr => arr.map(o => o === obj ? { ...o, id: i, heading: value} : o));
+						          setValues(arr => arr.map(o => o === obj ? { ...o, heading: value} : o));
 						          
 						        }
 
 						        function handleChangeHeadingColor(event) {
 						          const value = event.currentTarget.value;
-						          setValues(arr => arr.map(o => o === obj ? { ...o, id: i, headingColor: value} : o));
-						          console.log(values);
+						          setValues(arr => arr.map(o => o === obj ? { ...o, headingColor: value} : o));
+
+
 						        }
 						        function handleExtra(event) {
 						          const value = event.currentTarget.value;
-						          setValues(arr => arr.map(o => o === obj ? { ...o, id: i, extra: value} : o));
+						          setValues(arr => arr.map(o => o === obj ? { ...o, extra: value} : o));
 						         
 						        }
 						        function handleExtraColor(event) {
 						          const value = event.currentTarget.value;
-						          setValues(arr => arr.map(o => o === obj ? { ...o, id: i, extraColor: value} : o));
-						         console.log(values)
+						          setValues(arr => arr.map(o => o === obj ? { ...o, extraColor: value} : o));
 						        }
 
+						        function checkId(){
+						        	let color = "";
+						        	values.map((obj) => {
+						        		if(obj.id == 0){
+						        			console.log('match');
+						        			color = props.setExtraHeadingColorOneSaved;
+						        		}
+						        	}) 
+						        	return color;
+						        }
+
+						       
+
+						       
+						        
+						        
 						        return (
-						        	<fieldset className="flex-color extra" key={i}>
+						        	<fieldset className="flex-color extra" key={i} test={props.setExtraHeadingColorOneSaved}>
 					      	    <label>Extra</label>
+
 					      	    <div className="field-50">
 						      	    <div className="field">
 							            <select 
@@ -269,7 +290,10 @@ function FormFields(props){
 							              </select>
 						             </div>
 						             <div>
-						          		<input type="color" id="color" placeholder="pick a color" onChange={handleChangeHeadingColor}/>
+
+						            	
+			
+						          		<input type="color" id="color" placeholder="pick a color" onChange={handleChangeHeadingColor} value={obj.headingColor ? obj.headingColor : checkId()}/>
 						          	</div>
 					          	</div>
 					          	<div className="field-50">
