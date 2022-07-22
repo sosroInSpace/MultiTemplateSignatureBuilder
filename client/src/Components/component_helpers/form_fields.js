@@ -210,12 +210,10 @@ function FormFields(props){
 	              onChange={bylineChange}
 	              />
 	          	<div>
-	          		<input type="color" id="color-byline-1" placeholder="pick a color" onChange={bylineColorChange} value={bylineColor ? bylineColor : props.setBylineSaved}/>
+	          		<input type="color" id="color-byline-1" placeholder="pick a color" onChange={bylineColorChange} value={bylineColor}/>
 	          	</div>
 	         
-	          	{props.setBylineSaved != "" ? 
-	          	<MoreBylines byline_change={additionalBylineChange} byline_color_change={additionalColorChange} color={addColor ? addColor : props.setAddColorSaved}/>
-	          	: addByline ? addByline : ""}
+	          	{addByline ? addByline : ""}
 	          	
 	          	<div className="byline-additional">
 	          		<button onClick={buttonAddByline} className="add-another">{bylimeLimit ? "Limit Reached!" : "Add Another+"}</button>

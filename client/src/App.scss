@@ -9,6 +9,41 @@ html {
     width:100%;
   }
 }
+
+.modal-wrapper {
+    width: calc(100% - 20px);
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index:999;
+    padding:10px;
+    position:relative;
+    &.hide {
+      display:none;
+    }
+
+    form {
+      border:2px solid;
+      background:#fff;
+      position:relative;
+      width:100%;
+      box-sizing:border-box;
+      padding:15px;
+      width:100%;
+      margin-top:15px;
+    }
+    fieldset {
+      
+     
+      button {
+        display:block;
+        width:100%;
+      }
+      label {
+        display:block;
+      }
+    }
+}
 .error {
   color:#555;
   animation:blink .6s 1;

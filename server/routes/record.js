@@ -47,22 +47,9 @@ recordRoutes.route("/record/add").post(function (req, response) {
    email: req.body.email,
    password: req.body.password,
    password_check: req.body.password_check,
-   signature_template: {
-        signature_name: req.body.signature_name,
-        heading_color: req.body.heading_color,
-        byline_color_1: req.body.byline_color_1,
-        byline_color_2: req.body.byline_color_2,
-        logo_url: req.body.logo_url,
-        logo_width: req.body.logo_width,
-        extra_heading_color_1: req.body.extra_heading_color_1,
-        extra_heading_color_value_1: req.body.extra_heading_color_value_1,
-        extra_heading_color_2: req.body.extra_heading_color_2,
-        extra_heading_color_value_2: req.body.extra_heading_color_value_2,
-        extra_heading_color_3: req.body.extra_heading_color_3,
-        extra_heading_color_value_3: req.body.extra_heading_color_value_3,
-        extra_heading_color_4: req.body.extra_heading_color_4,
-        extra_heading_color_value_4: req.body.extra_heading_color_value_4,
-      }
+   signature_templates: [
+         
+   ]
  };
  db_connect.collection("records").insertOne(myobj, function (err, res) {
    if (err) throw err;
@@ -75,27 +62,13 @@ recordRoutes.route("/update/:id").post(function (req, response) {
  let db_connect = dbo.getDb("records"); 
  let myquery = { _id: ObjectId( req.params.id )}; 
 
- 
  let newValues = {   
-   $set: {     
-     signature_template: {
-
-        heading_color: req.body.$set.signature_template.heading_color ? req.body.$set.signature_template.heading_color : "",
-        byline_color_1: req.body.$set.signature_template.byline_color_1 ? req.body.$set.signature_template.byline_color_1 : "",
-        byline_color_2: req.body.$set.signature_template.byline_color_2 ? req.body.$set.signature_template.byline_color_2 : "",
-        logo_url: req.body.$set.signature_template.logo_url ? req.body.$set.signature_template.logo_url : "",
-        logo_width: req.body.$set.signature_template.logo_width ? req.body.$set.signature_template.logo_width : "",
-        extra_heading_color_1: req.body.$set.signature_template.extra_heading_color_1 ? req.body.$set.signature_template.extra_heading_color_1 : "",
-        extra_heading_color_value_1: req.body.$set.signature_template.extra_heading_color_value_1 ? req.body.$set.signature_template.extra_heading_color_value_1 : "",
-        extra_heading_color_2: req.body.$set.signature_template.extra_heading_color_2 ? req.body.$set.signature_template.extra_heading_color_2 : "",
-        extra_heading_color_value_2: req.body.$set.signature_template.extra_heading_color_value_2 ? req.body.$set.signature_template.extra_heading_color_value_2 : "",
-        extra_heading_color_3: req.body.$set.signature_template.extra_heading_color_3 ? req.body.$set.signature_template.extra_heading_color_3 : "",
-        extra_heading_color_value_3: req.body.$set.signature_template.extra_heading_color_value_3 ? req.body.$set.signature_template.extra_heading_color_value_3 : "",
-        extra_heading_color_4: req.body.$set.signature_template.extra_heading_color_4 ? req.body.$set.signature_template.extra_heading_color_4 : "",
-        extra_heading_color_value_4: req.body.$set.signature_template.extra_heading_color_value_4 ? req.body.$set.signature_template.extra_heading_color_value_4 : "",
-      }
-   }, 
+   $push: {
+        signature_templates: req.body.$push.signature_templates
+        
+    },
   };
+
   db_connect
     .collection("records")
     .updateOne(myquery, newValues, function (err, res) {
@@ -104,6 +77,9 @@ recordRoutes.route("/update/:id").post(function (req, response) {
       console.log(newValues);
     });
 });
+
+// This section will help you update a record by id.
+
  
 // This section will help you delete a record
 recordRoutes.route("/:id").delete((req, response) => {

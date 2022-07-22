@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import S3 from 'react-aws-s3';
-require('dotenv').config()
+import 'dotenv/config';
 
 function FileUpload(props) {
 
